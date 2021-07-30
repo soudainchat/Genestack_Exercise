@@ -6,7 +6,7 @@ df <- read.csv("Homo+sapiens.csv")
 ui <- fluidPage(
     titlePanel("Genestack Exercise"),
     sidebarPanel(
-        selectizeInput("inpt", "Enter gene symbol or gene onthology term:", 
+        selectizeInput("inpt", "Enter gene symbol or gene ontology term:", 
                        choices = NULL)
     ),
     mainPanel(
@@ -30,14 +30,14 @@ server <- function(input, output, session) {
         else if (input$inpt %in% df$gene_symbol){
             unique(paste0("<p>", "<b>", "Gene Symbol: ", "</b>", input$inpt, "</p>",
                           "<p>","<b>", "Gene Synonyms: ","</b>", df[df$gene_symbol == input$inpt, "gene_synonyms"], "</p>",
-                          "<p>","<b>", "Gene Onthology Term: ","</b>", df[df$gene_symbol == input$inpt, "go_term_label"], "</p>"))
+                          "<p>","<b>", "Gene Ontology Term: ","</b>", df[df$gene_symbol == input$inpt, "go_term_label"], "</p>"))
         }
         else if (input$inpt %in% df$go_term_label){ 
             unique(paste0("<b>", "Associated gene: ", "</b>", 
                           "<p>", df[df$go_term_label== input$inpt, "gene_symbol"], "</p>", 
                           "<b>", " Synonyms: ", "</b>", 
                           "<p>", df[df$go_term_label== input$inpt, "gene_synonyms"],"</p>",
-                          "<b>", " Onthology Term: ", "</b>", 
+                          "<b>", " Ontology Term: ", "</b>", 
                           "<p>", df[df$go_term_label== input$inpt, "go_term_label"],"</p>", 
                           "<br>" ))
         }
