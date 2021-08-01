@@ -36,9 +36,15 @@ server <- function(input, output, session) {
             unique(paste0("<b>", "Associated gene: ", "</b>", 
                           "<p>", df[df$go_term_label== input$inpt | substr(df$go_term_label, 1, nchar(input$inpt)) == input$inpt, "gene_symbol"], "</p>", 
                           "<b>", " Synonyms: ", "</b>", 
+<<<<<<< HEAD
                           "<p>", df[df$go_term_label== input$inpt | substr(df$go_term_label, 1, nchar(input$inpt)) == input$inpt, "gene_synonyms"],"</p>",
                           "<b>", " Ontology Term: ", "</b>", 
                           "<p>", df[df$go_term_label== input$inpt | substr(df$go_term_label, 1, nchar(input$inpt)) == input$inpt, "go_term_label"],"</p>", 
+=======
+                          "<p>", df[df$go_term_label== input$inpt, "gene_synonyms"],"</p>",
+                          "<b>", " Ontology Term: ", "</b>", 
+                          "<p>", df[df$go_term_label== input$inpt, "go_term_label"],"</p>", 
+>>>>>>> 6d8703da9116d7a6f59c8ec026bb7bf50fee23fe
                           "<br>" ))
         }
         
